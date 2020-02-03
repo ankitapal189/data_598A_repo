@@ -1,0 +1,62 @@
+---
+title: "My Rmd document"
+author: "Ankita Pal"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: bookdown::html_document
+---
+
+```{r,starwars-plot,fig.cap ='A ggplot ofStarwars data'}
+library(tidyverse)
+starwars %>% 
+  filter(species == "Human") %>% 
+ggplot() +
+  aes(x = height, 
+      y = mass) +
+  geom_point()
+
+```
+
+We can see in Figure \@ref(fig:starwars-plot)...
+
+We need a chunk label and a chunk caption for cross-referencing to work!
+
+```{r starwars-tbl}
+starwars %>% 
+  filter(species == "Human")  %>% 
+  select(name, 
+         height, 
+         mass, 
+         homeworld) %>% 
+  knitr::kable(caption = "A knitr kable table of starwars data")
+```
+
+We can see in Table \@ref(tab:starwars-tbl) …
+
+
+
+```{r, my-fig, fig.cap='My non-code figure'}
+
+knitr::include_graphics("C://Users//ankit//OneDrive//Pictures//ct3.PNG")
+
+```
+
+
+We can see in Figure \@ref(fig:my-fig)
+
+---
+title: "My great report"
+output: bookdown::html_document2
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+---
+
+Blah blah [@Barba2019; @Leveque2012].
+
+Stodden et al. says blah [-@Stodden2014].
+
+@Claerbout1992 says blah.
+
+Blah blah [see [@Barba2019, pp. 33-35; also @Stodden2014, ch. 1].
+
+## References cited
+
+
